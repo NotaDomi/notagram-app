@@ -18,6 +18,8 @@ export default function Login ({setLogged,setLoggedUser})  {
     axios.post( 'https://notgram-api.onrender.com/auth/login', {
         username: signInfo.username,
         password: signInfo.password
+      }, {
+        withCredentials: true
       }).then(r => {
         alert(r.data.message)
         axios.get('https://notgram-api.onrender.com/auth/check')
