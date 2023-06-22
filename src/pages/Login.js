@@ -15,12 +15,12 @@ export default function Login ({setLogged,setLoggedUser})  {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post( '/auth/login', {
+    axios.post( 'https://notgram-api.onrender.com/auth/login', {
         username: signInfo.username,
         password: signInfo.password
       }).then(r => {
         alert(r.data.message)
-        axios.get('/auth/check')
+        axios.get('https://notgram-api.onrender.com/auth/check')
         .then((response)=>{
         
         setLogged(response.data.isLogged)

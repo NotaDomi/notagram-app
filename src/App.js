@@ -18,7 +18,7 @@ function App() {
 
   useEffect( () => { 
     
-    axios.get('/auth/check')
+    axios.get('https://notgram-api.onrender.com/auth/check')
     .then((response)=>{
       console.log(isLogged)
       console.log(response)
