@@ -7,7 +7,7 @@ export default function Card ({ username, myId, setLoggedUser, setLogged }) {
     const [isClicked, setClicked] = useState(false)
 
     const addFriend = () => {
-        axios.post('https://notgram-api.onrender.com/api/users/addFriend?_method=PUT', {
+        axios.post('https://api.notagram.onrender.com/api/users/addFriend?_method=PUT', {
             id: myId,
             username: username
         }).then( res => {
@@ -15,7 +15,7 @@ export default function Card ({ username, myId, setLoggedUser, setLogged }) {
             setClicked(true)
         }).catch(error=>{
             alert(error.response.data.message)
-            axios.get('https://notgram-api.onrender.com/auth/check')
+            axios.get('https://api.notagram.onrender.com/auth/check')
                 .then( ()=>{
                 
                 setLogged(error.response.data.isLogged)

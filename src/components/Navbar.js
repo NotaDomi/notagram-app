@@ -11,19 +11,19 @@ const Navbar = ({isLogged,setLogged,loggedUser,setLoggedUser}) => {
   axios.defaults.withCredentials=true
 
   const logoutHandler = ()=>{
-    axios.post('https://notgram-api.onrender.com/auth/logout',{})
+    axios.post('https://api.notagram.onrender.com/auth/logout',{})
     .then(response=>{
       alert(response.data.message)
-        axios.get('https://notgram-api.onrender.com/auth/check')
+        axios.get('https://api.notagram.onrender.com/auth/check')
           .then((response)=>{
           
           setLogged(response.data.isLogged)
           setLoggedUser(response.data.user)
         })
-        navigate('https://notgram-api.onrender.com/login');  
+        navigate('https://api.notagram.onrender.com/login');  
     }).catch(error=>{
       alert(error.response.data.message)
-      axios.get('https://notgram-api.onrender.com/auth/check')
+      axios.get('https://api.notagram.onrender.com/auth/check')
           .then( ()=>{
           
           setLogged(error.response.data.isLogged)

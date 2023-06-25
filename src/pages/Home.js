@@ -13,14 +13,14 @@ export default function Home ({isLogged,setLogged,loggedUser,setLoggedUser}) {
 
     useEffect( () => { 
 
-        axios.get('https://notgram-api.onrender.com/api/users/allUsers')
+        axios.get('https://api.notagram.onrender.com/api/users/allUsers')
         .then(res => {
             setAllUsers(res.data)
             setLoading(false)
         })
         .catch(error=>{
             alert(error.response.data.message)
-            axios.get('https://notgram-api.onrender.com/auth/check')
+            axios.get('https://api.notagram.onrender.com/auth/check')
                 .then(()=>{
                 
                 setLogged(error.response.data.isLogged)

@@ -7,7 +7,7 @@ export default function Friend({username, myId, isLogged, setLogged, loggedUser,
   const [isClicked, setClicked] = useState(false)
 
   const removeFriend = () => {
-    axios.post('https://notgram-api.onrender.com/api/users/removeFriend?_method=PUT', {
+    axios.post('https://api.notagram.onrender.com/api/users/removeFriend?_method=PUT', {
         id: myId,
         username: username
     }).then( res => {
@@ -16,7 +16,7 @@ export default function Friend({username, myId, isLogged, setLogged, loggedUser,
       setClicked(true)
       }).catch(error=>{
       alert(error.response.data.message)
-      axios.get('https://notgram-api.onrender.com/auth/check')
+      axios.get('https://api.notagram.onrender.com/auth/check')
           .then((response)=>{
           console.log(isLogged)
           console.log(response)
@@ -27,14 +27,14 @@ export default function Friend({username, myId, isLogged, setLogged, loggedUser,
 }
 
 const apriChat = () => {
-  axios.get(`https://notgram-api.onrender.com/api/messages/getMessages/${loggedUser.id}/${myId}`).then( res => {
+  axios.get(`https://api.notagram.onrender.com/api/messages/getMessages/${loggedUser.id}/${myId}`).then( res => {
     console.log(res.data);
     setMessages(res.data);
     setClick(true);
     setFriend({user:username,id:myId})
     }).catch(error=>{
     alert(error.response.data.message)
-    axios.get('https://notgram-api.onrender.com/auth/check')
+    axios.get('https://api.notagram.onrender.com/auth/check')
         .then((response)=>{
         console.log(isLogged)
         console.log(response)

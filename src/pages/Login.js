@@ -15,14 +15,14 @@ export default function Login ({setLogged,setLoggedUser})  {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post( 'https://notgram-api.onrender.com/auth/login', {
+    axios.post( 'https://api.notagram.onrender.com/auth/login', {
         username: signInfo.username,
         password: signInfo.password
       }, {
         withCredentials: true
       }).then(r => {
         alert(r.data.message)
-        axios.get('https://notgram-api.onrender.com/auth/check')
+        axios.get('https://api.notagram.onrender.com/auth/check')
         .then((response)=>{
         
         setLogged(response.data.isLogged)

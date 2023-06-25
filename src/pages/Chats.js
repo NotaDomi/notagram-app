@@ -16,13 +16,13 @@ export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser}) {
   
 
     useEffect( () => {
-        axios.get('https://notgram-api.onrender.com/api/users/allFriends').then(res => {
+        axios.get('https://api.notagram.onrender.com/api/users/allFriends').then(res => {
             
             setFriends(res.data.friends);
             setLoading(false)
         }).catch(error=>{
           alert(error.response.data.message)
-          axios.get('https://notgram-api.onrender.com/auth/check')
+          axios.get('https://api.notagram.onrender.com/auth/check')
               .then( ()=>{
              
               setLogged(error.response.data.isLogged)

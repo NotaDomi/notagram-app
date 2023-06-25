@@ -18,20 +18,20 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
   
       const sendMessage = (event) => {
         event.preventDefault();
-        axios.post('https://notgram-api.onrender.com/api/messages/send', {
+        axios.post('https://api.notagram.onrender.com/api/messages/send', {
             sender: loggedUser.id,
             receiver: friend.id,
             content: message
         }).then( () => {
           
-          axios.get(`https://notgram-api.onrender.com/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
+          axios.get(`https://api.notagram.onrender.com/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
             
             setMessages(res.data);
             setMessage('');
           })
         }).catch(error=>{
           alert(error.response.data.message)
-          axios.get('https://notgram-api.onrender.com/auth/check')
+          axios.get('https://api.notagram.onrender.com/auth/check')
           .then( ()=>{
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
@@ -41,13 +41,13 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
   
   
       const updateHandler = () => {
-        axios.get(`https://notgram-api.onrender.com/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
+        axios.get(`https://api.notagram.onrender.com/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
           
           setMessages(res.data);
           setFriend({user:friend.user,id:friend.id})
           }).catch(error=>{
           alert(error.response.data.message)
-          axios.get('https://notgram-api.onrender.com/auth/check')
+          axios.get('https://api.notagram.onrender.com/auth/check')
               .then(()=>{
               
               setLogged(error.response.data.isLogged)
